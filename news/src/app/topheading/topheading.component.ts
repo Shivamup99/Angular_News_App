@@ -1,0 +1,19 @@
+import { NewsapiservicesService } from './../service/newsapiservices.service';
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-topheading',
+  templateUrl: './topheading.component.html',
+  styleUrls: ['./topheading.component.css']
+})
+export class TopheadingComponent implements OnInit {
+
+  constructor(private _service:NewsapiservicesService) { }
+
+  topHeadingDisplay:any=[]
+  ngOnInit(): void {
+    this._service.topHeading().subscribe((result)=>{
+      this.topHeadingDisplay = result.articles
+    })
+  }
+
+}
